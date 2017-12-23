@@ -33,4 +33,33 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\Earth.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Jupiter.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Mars.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Mercury.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Neptune.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Saturn.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Uranus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Venus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Sun.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
