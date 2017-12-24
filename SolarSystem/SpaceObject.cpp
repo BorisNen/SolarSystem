@@ -20,12 +20,10 @@ void SpaceObject::drawObject()
 
 void SpaceObject::displayObject()
 {
-	if (object == NULL && objectTexture == NULL) { //check if the textures are loaded and reuse them
-		gluQuadricDrawStyle(object, GLU_FILL);
-		gluQuadricOrientation(object, GLU_OUTSIDE);
-		gluQuadricTexture(object, GL_TRUE);
-		gluQuadricNormals(object, GLU_SMOOTH);
-	}
+	gluQuadricDrawStyle(object, GLU_FILL);
+	gluQuadricOrientation(object, GLU_OUTSIDE);
+	gluQuadricTexture(object, GL_TRUE);
+	gluQuadricNormals(object, GLU_SMOOTH);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, objectTexture);
 	gluSphere(object, objectDimension, 20, 20);
