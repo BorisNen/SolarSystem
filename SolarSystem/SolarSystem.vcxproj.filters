@@ -21,10 +21,13 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Planet.h">
+    <ClInclude Include="SpaceObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpaceObject.h">
+    <ClInclude Include="OrbitingObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DiskShapedObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,10 +38,13 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Planet.cpp">
+    <ClCompile Include="SpaceObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpaceObject.cpp">
+    <ClCompile Include="OrbitingObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DiskShapedObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,6 +77,24 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Textures\Sun.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Moon.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\SaturnRing.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Background.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\AsteroidBelt.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\GenericMoon.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Europa.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

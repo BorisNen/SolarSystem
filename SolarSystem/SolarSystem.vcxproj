@@ -149,14 +149,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Planet.h" />
+    <ClInclude Include="DiskShapedObject.h" />
+    <ClInclude Include="OrbitingObject.h" />
     <ClInclude Include="SpaceObject.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DiskShapedObject.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Planet.cpp" />
+    <ClCompile Include="OrbitingObject.cpp" />
     <ClCompile Include="SpaceObject.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -169,12 +171,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Textures\AsteroidBelt.jpg" />
+    <Image Include="Textures\Background.jpg" />
     <Image Include="Textures\Earth.bmp" />
+    <Image Include="Textures\Europa.jpg" />
+    <Image Include="Textures\GenericMoon.jpg" />
     <Image Include="Textures\Jupiter.bmp" />
     <Image Include="Textures\Mars.bmp" />
     <Image Include="Textures\Mercury.bmp" />
+    <Image Include="Textures\Moon.jpg" />
     <Image Include="Textures\Neptune.bmp" />
     <Image Include="Textures\Saturn.bmp" />
+    <Image Include="Textures\SaturnRing.jpg" />
     <Image Include="Textures\Sun.bmp" />
     <Image Include="Textures\Uranus.bmp" />
     <Image Include="Textures\Venus.bmp" />

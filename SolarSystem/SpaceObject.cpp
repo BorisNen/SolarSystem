@@ -2,20 +2,34 @@
 #include <GL/glut.h>
 #include "SpaceObject.h"
 
-SpaceObject::SpaceObject(float x, float y, float counter, float dimension, const char* texturePath)
+float SpaceObject::rotationAngle = 5.0f;
+
+SpaceObject::SpaceObject(float x, float y, float counter, float dimension, float _axisRotationPedriod, const char* texturePath)
 {
 	objectX = x;
 	objectY = y;
 	objectCounter = counter;
 	objectDimension = dimension;
+	axisRotationPedriod = _axisRotationPedriod;
 
+	object = gluNewQuadric();
+	objectTexture = loadTexture(texturePath);
+}
+
+SpaceObject::SpaceObject(const char* texturePath)
+{
 	object = gluNewQuadric();
 	objectTexture = loadTexture(texturePath);
 }
 
 void SpaceObject::drawObject()
 {
+	glPushMatrix(); //save identity matrix
+	glRotatef(rotationAngle/axisRotationPedriod, 0, 0, 1); //rotate the sun around its axis
+
 	displayObject();
+
+	glPopMatrix(); //prepare identity matrix for planet drawing
 }
 
 void SpaceObject::displayObject()
