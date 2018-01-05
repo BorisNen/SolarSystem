@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include <GL/glut.h>
 #include "SpaceObject.h"
+#include "OrbitingObject.h"
+#include <vector>
 
 float SpaceObject::rotationAngle = 5.0f;
 
@@ -16,6 +18,19 @@ SpaceObject::SpaceObject(float x, float y, float counter, float dimension, float
 	objectTexture = loadTexture(texturePath);
 }
 
+SpaceObject::SpaceObject(float x, float y, float counter, float dimension, float _axisRotationPedriod, const char* texturePath, std::vector<SpaceObject*> inputOrbitingBodies)
+{
+	objectX = x;
+	objectY = y;
+	objectCounter = counter;
+	objectDimension = dimension;
+	axisRotationPedriod = _axisRotationPedriod;
+	orbitingBodies = inputOrbitingBodies;
+
+	object = gluNewQuadric();
+	objectTexture = loadTexture(texturePath);
+}
+
 SpaceObject::SpaceObject(const char* texturePath)
 {
 	object = gluNewQuadric();
@@ -25,9 +40,14 @@ SpaceObject::SpaceObject(const char* texturePath)
 void SpaceObject::drawObject()
 {
 	glPushMatrix(); //save identity matrix
-	glRotatef(rotationAngle/axisRotationPedriod, 0, 0, 1); //rotate the sun around its axis
+	glRotatef(rotationAngle / axisRotationPedriod, 0, 0, 1); //rotate the sun around its axis
 
 	displayObject();
+
+	for (unsigned i = 0; i < orbitingBodies.size(); ++i)
+	{
+		orbitingBodies[i]->drawObject();
+	}
 
 	glPopMatrix(); //prepare identity matrix for planet drawing
 }
@@ -56,4 +76,14 @@ GLuint SpaceObject::loadTexture(const char* texture)
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	return textureID;
+}
+
+float SpaceObject::getPositionX() 
+{
+	return objectX;
+}
+
+float SpaceObject::getPositionY()
+{
+	return objectY;
 }

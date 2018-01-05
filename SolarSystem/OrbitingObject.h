@@ -12,10 +12,10 @@ class OrbitingObject : public SpaceObject
 	float inclination; //Equatorial Inclination
 	float radiusX;
 	float radiusY;
-	BOOLEAN isMoon;
+	int isMoon;
 
 public:
-	OrbitingObject(float x, float y, float counter, float dimension, float axisRotationPedriod, const char* texturePath, float _orbitalPeriod, float _eccentricity, float inclination, float _radiusX, float _radiusY, BOOLEAN isMoon);
+	OrbitingObject(float x, float y, float counter, float dimension, float axisRotationPedriod, const char* texturePath, float _orbitalPeriod, float _eccentricity, float inclination, float _radiusX, float _radiusY, int isMoon);
 	virtual void drawObject();
 private:
 	void drawOrbit();

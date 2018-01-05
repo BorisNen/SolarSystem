@@ -8,7 +8,7 @@
 
 const float OrbitingObject::DEG_IN_RAD = M_PI / 180;
 
-OrbitingObject::OrbitingObject(float x, float y, float counter, float dimension, float axisRotationPedriod, const char* texturePath, float _orbitalPeriod, float _eccentricity, float _inclination, float _radiusX, float _radiusY, BOOLEAN _isMoon)
+OrbitingObject::OrbitingObject(float x, float y, float counter, float dimension, float axisRotationPedriod, const char* texturePath, float _orbitalPeriod, float _eccentricity, float _inclination, float _radiusX, float _radiusY, int _isMoon)
 	: SpaceObject(x, y, counter, dimension, axisRotationPedriod, texturePath)
 {
 	orbitalPeriod = _orbitalPeriod;
@@ -23,7 +23,9 @@ void OrbitingObject::drawObject()
 {
 	if (isMoon) {
 		drawMoonObject();
-	} else {
+	}
+	else 
+	{
 		drawPlanetObject();
 	}
 }
@@ -49,11 +51,11 @@ void OrbitingObject::drawPlanetObject()
 
 	glPushMatrix(); //save the planet matrix to draw the moon without unnecessary rotation
 
-	glRotatef(rotationAngle/axisRotationPedriod, 0, 0, 1); //axis rotation
+	glRotatef(rotationAngle / axisRotationPedriod, 0, 0, 1); //axis rotation
 
-	// draw planet
+															 // draw planet
 	SpaceObject::displayObject();
-	
+
 	glPopMatrix(); //get planet matrix for moon drawing
 }
 
@@ -68,7 +70,7 @@ void OrbitingObject::drawMoonObject()
 		objectCounter = 0;//reset at 360
 	else
 		objectCounter += 1 / orbitalPeriod; //speed control divide by orbital period
-		
+
 	objectX = cos(objectCounter*OrbitingObject::DEG_IN_RAD) * radiusX + eccentricity;
 	objectY = sin(objectCounter*OrbitingObject::DEG_IN_RAD) * radiusY;
 	glTranslatef(objectX, objectY, 0.0f);
