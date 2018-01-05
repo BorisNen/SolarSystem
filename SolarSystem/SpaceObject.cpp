@@ -1,29 +1,63 @@
+#include "stdafx.h"
+#include "LUtil.h"
 #include "SpaceObject.h"
+#include "OrbitingObject.h"
+#include <vector>
 
-SpaceObject::SpaceObject(float x,float y, float counter, float dimension, char* texturePath)
+float SpaceObject::rotationAngle = 5.0f;
+
+SpaceObject::SpaceObject(float x, float y, float counter, float dimension, float _axisRotationPedriod, const char* texturePath)
 {
-    objectX = x;
-    objectY = y;
-    objectCounter = counter;
-    objectDimension = dimension;
+	objectX = x;
+	objectY = y;
+	objectCounter = counter;
+	objectDimension = dimension;
+	axisRotationPedriod = _axisRotationPedriod;
 
-    object = gluNewQuadric();
-    objectTexture = loadTexture(texturePath);
+	object = gluNewQuadric();
+	objectTexture = loadTexture(texturePath);
+}
+
+SpaceObject::SpaceObject(float x, float y, float counter, float dimension, float _axisRotationPedriod, const char* texturePath, std::vector<SpaceObject*> inputOrbitingBodies)
+{
+	objectX = x;
+	objectY = y;
+	objectCounter = counter;
+	objectDimension = dimension;
+	axisRotationPedriod = _axisRotationPedriod;
+	orbitingBodies = inputOrbitingBodies;
+
+	object = gluNewQuadric();
+	objectTexture = loadTexture(texturePath);
+}
+
+SpaceObject::SpaceObject(const char* texturePath)
+{
+	object = gluNewQuadric();
+	objectTexture = loadTexture(texturePath);
 }
 
 void SpaceObject::drawObject()
 {
-    displayObject();
+	glPushMatrix(); //save identity matrix
+	glRotatef(rotationAngle/axisRotationPedriod, 0, 0, 1); //rotate the sun around its axis
+
+	displayObject();
+
+	for (unsigned i = 0; i < orbitingBodies.size(); ++i)
+	{
+		orbitingBodies[i]->drawObject();
+	}
+
+	glPopMatrix(); //prepare identity matrix for planet drawing
 }
 
 void SpaceObject::displayObject()
 {
-    if(object == NULL && objectTexture == NULL){ //check if the textures are loaded and reuse them
-		gluQuadricDrawStyle(object, GLU_FILL);
-		gluQuadricOrientation(object, GLU_OUTSIDE);
-		gluQuadricTexture(object, GL_TRUE);
-		gluQuadricNormals(object, GLU_SMOOTH);
-	}
+	gluQuadricDrawStyle(object, GLU_FILL);
+	gluQuadricOrientation(object, GLU_OUTSIDE);
+	gluQuadricTexture(object, GL_TRUE);
+	gluQuadricNormals(object, GLU_SMOOTH);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, objectTexture);
 	gluSphere(object, objectDimension, 20, 20);
