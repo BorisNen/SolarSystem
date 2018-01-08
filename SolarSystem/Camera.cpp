@@ -28,8 +28,18 @@ Camera::~Camera()
 // gluLookAt mit Kamera Parametern setzen
 void Camera::spaceObjectView(float x, float y)
 {
+	glOrtho(-10.0, 10.0, -10.0, 10.0, -6000.0, 6000);
 	gluLookAt(x, y, 0,
-		x, y, 0,
+		x+100, y-20, 5,
+		0, 1, 0);
+}
+
+void Camera::spaceObjectView()
+{
+	glOrtho(-100.0, 100.0, -100.0, 100.0, -60.0, 60);
+
+	gluLookAt(447, 0, 0,
+		447, 70, 2,
 		0, 1, 0);
 }
 
