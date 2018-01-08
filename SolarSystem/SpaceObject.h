@@ -12,7 +12,7 @@ public:
 	SpaceObject(float x, float y, float counter, float objectDimension, float axisRotationPedriod, const char* texturePath);
 	SpaceObject(float x, float y, float counter, float dimension, float _axisRotationPedriod, const char* texturePath, std::vector<SpaceObject*> inputOrbitingBodies);
 	SpaceObject(const char* texturePath);
-	virtual void drawObject();
+	virtual void drawObject(int displayOrbits);
 	static float rotationAngle;
 	float getPositionX();
 	float getPositionY();

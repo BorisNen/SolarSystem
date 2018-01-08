@@ -9,8 +9,7 @@ public:
 	Camera();
 	~Camera();
 
-	void spaceObjectView(float x, float y);
-	void spaceObjectView();
+	void spaceObjectView(float x, float y, float distX, float distY);
 	void pilotView();
 	void move();
 	void rotate(float deltaX, float deltaY);

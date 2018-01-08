@@ -13,7 +13,7 @@ class DiskShapedObject : public SpaceObject
 public:
 	DiskShapedObject(const char* texturePath, float _innerRadius, float _outterRadius);
 private:
-	void drawObject();
+	void drawObject(int displayOrbits);
 };
 
 #endif

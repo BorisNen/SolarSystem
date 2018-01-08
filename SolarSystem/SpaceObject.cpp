@@ -37,7 +37,7 @@ SpaceObject::SpaceObject(const char* texturePath)
 	objectTexture = loadTexture(texturePath);
 }
 
-void SpaceObject::drawObject()
+void SpaceObject::drawObject(int displayOrbits)
 {
 	glPushMatrix(); //save identity matrix
 	glRotatef(rotationAngle / axisRotationPedriod, 0, 0, 1); //rotate the sun around its axis
@@ -46,7 +46,7 @@ void SpaceObject::drawObject()
 
 	for (unsigned i = 0; i < orbitingBodies.size(); ++i)
 	{
-		orbitingBodies[i]->drawObject();
+		orbitingBodies[i]->drawObject(displayOrbits);
 	}
 
 	glPopMatrix(); //prepare identity matrix for planet drawing

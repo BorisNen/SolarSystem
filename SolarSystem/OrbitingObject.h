@@ -16,11 +16,11 @@ class OrbitingObject : public SpaceObject
 
 public:
 	OrbitingObject(float x, float y, float counter, float dimension, float axisRotationPedriod, const char* texturePath, float _orbitalPeriod, float _eccentricity, float inclination, float _radiusX, float _radiusY, int isMoon);
-	virtual void drawObject();
+	virtual void drawObject(int displayOrbits);
 private:
 	void drawOrbit();
-	void drawPlanetObject();
-	void drawMoonObject();
+	void drawPlanetObject(int displayOrbits);
+	void drawMoonObject(int displayOrbits);
 	static float const DEG_IN_RAD;
 };
 

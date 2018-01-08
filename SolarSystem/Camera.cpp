@@ -10,7 +10,7 @@ const float Pi = 3.141592;
 // Konstruktor: Default Werte setzen
 Camera::Camera()
 {
-	mPosition.setXYZ(0, 120, 0);  // irgendwo ueber dem Ursprung (hoffentlich ueber dem Berg...)
+	mPosition.setXYZ(-700, -100, -500);  // irgendwo ueber dem Ursprung (hoffentlich ueber dem Berg...)
 	mSpeed = 0.0;
 	mTheta = Pi / 2.0;           // Kamera waagrecht
 	mPhi = Pi / 4.0;             // schraeg durchs Gelaende schauen 
@@ -26,21 +26,11 @@ Camera::~Camera()
 }
 
 // gluLookAt mit Kamera Parametern setzen
-void Camera::spaceObjectView(float x, float y)
+void Camera::spaceObjectView(float x, float y, float distX, float distY)
 {
-	glOrtho(-10.0, 10.0, -10.0, 10.0, -6000.0, 6000);
-	gluLookAt(x, y, 0,
-		x+100, y-20, 5,
-		0, 1, 0);
-}
-
-void Camera::spaceObjectView()
-{
-	glOrtho(-100.0, 100.0, -100.0, 100.0, -60.0, 60);
-
-	gluLookAt(447, 0, 0,
-		447, 70, 2,
-		0, 1, 0);
+	gluLookAt(x+distX, y+distY, 10,
+		x, y, 0,
+		0, 1, 5);
 }
 
 // gluLookAt mit Kamera Parametern setzen

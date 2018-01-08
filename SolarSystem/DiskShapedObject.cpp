@@ -9,7 +9,7 @@ DiskShapedObject::DiskShapedObject(const char* texturePath, float _innerRadius, 
 	outterRadius = _outterRadius;
 }
 
-void DiskShapedObject::drawObject()
+void DiskShapedObject::drawObject(int displayOrbits)
 {
 	gluQuadricDrawStyle(object, GLU_FILL);
 	gluQuadricOrientation(object, GLU_OUTSIDE);

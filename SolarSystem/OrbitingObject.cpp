@@ -19,23 +19,24 @@ OrbitingObject::OrbitingObject(float x, float y, float counter, float dimension,
 	isMoon = _isMoon;
 }
 
-void OrbitingObject::drawObject()
+void OrbitingObject::drawObject(int displayOrbits)
 {
 	if (isMoon) {
-		drawMoonObject();
+		drawMoonObject(displayOrbits);
 	}
 	else 
 	{
-		drawPlanetObject();
+		drawPlanetObject(displayOrbits);
 	}
 }
 
-void OrbitingObject::drawPlanetObject()
+void OrbitingObject::drawPlanetObject(int displayOrbits)
 {
 	glPopMatrix(); //get the identity matrix before drawing a new planet
 	glPushMatrix(); //and save it
 
-	drawOrbit();
+	if (displayOrbits)
+		drawOrbit();
 	//TODO: fix path after tilt
 	//glRotated(inclination, 1, 0, 0); //axis tilt
 
@@ -59,11 +60,13 @@ void OrbitingObject::drawPlanetObject()
 	glPopMatrix(); //get planet matrix for moon drawing
 }
 
-void OrbitingObject::drawMoonObject()
+void OrbitingObject::drawMoonObject(int displayOrbits)
 {
 	glPushMatrix(); //save the planet matrix to draw other moons
 	glRotatef(inclination, 1, 0, 0);
-	drawOrbit();
+
+	if(displayOrbits)
+		drawOrbit();
 
 	// calculate moon position on orbital path 
 	if (objectCounter > 359)
