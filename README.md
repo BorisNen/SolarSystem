@@ -11,6 +11,3 @@
 # Libraries
 * [Freeglut](http://freeglut.sourceforge.net/) - Freeglut
 * [SOIL](http://www.lonesock.net/soil.html) - Simple OpenGL Image Library
-Or if you use NuGet, search for:
-* nupengl.core
-* soil
